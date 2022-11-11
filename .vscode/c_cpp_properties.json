@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "compileCommands": "${workspaceFolder}/build/compile_commands.json",
+            "includePath": [
+                "${default}",
+                "${workspaceFolder}/components/TFT_eSPI",
+                "${workspaceFolder}/components/arduino/cores/esp32",
+                "/home/icy/esp/esp-idf/components/freertos/include",
+                "/home/icy/esp/esp-idf/components/freertos/include/esp_additions/freertos",
+                "/home/icy/esp/esp-idf/components/mdns/test_afl_fuzz_host",
+                "/home/icy/esp/esp-idf/components/esp_common/include",
+                "/home/icy/esp/esp-idf/components/freertos/port/linux/include",
+                "/home/icy/.espressif/tools/xtensa-esp32-elf/esp-2021r2-patch3-8.4.0/xtensa-esp32-elf/xtensa-esp32-elf/include"
+            ]
+        }
+    ],
+    "version": 4
+}

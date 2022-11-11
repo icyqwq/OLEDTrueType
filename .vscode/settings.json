@@ -1,0 +1,24 @@
+{
+    "files.associations": {
+        "*.cjson": "jsonc",
+        "*.wxss": "css",
+        "*.wxs": "javascript",
+        "*.cmake": "cmake",
+        "*.glsl": "glsl",
+        "uni_esp32.h": "c",
+        "uni_main.h": "c",
+        "array": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp",
+        "regex": "cpp",
+        "unordered_set": "cpp",
+        "ft2build.h": "c",
+        "*.ipp": "cpp",
+        "tft_espi_esp32_s3.c": "cpp"
+    }
+}
