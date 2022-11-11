@@ -1,8 +1,4 @@
-# ESP-IDF + Arduino + Bluepad32 template app
-
-[![discord](https://img.shields.io/discord/775177861665521725.svg)](https://discord.gg/r5aMn6Cw5q)
-
-![logo](https://gitlab.com/ricardoquesada/bluepad32-arduino/-/raw/main/img/bluepad32-arduino-logo.png)
+# ESP_IDF + TFT_eSPI + TrueType + OLED Legacy Driver
 
 This is a template application to be used with [Espressif IoT Development Framework](https://github.com/espressif/esp-idf).
 
@@ -13,8 +9,7 @@ Requires ESP-IDF **v4.4** or newer.
 Includes the following ESP-IDF components, with a pre-configured `sdkconfig` file:
 
 * [Arduino Core for ESP32](https://github.com/espressif/arduino-esp32) component
-* [Bluepad32](https://gitlab.com/ricardoquesada/bluepad32/) component
-* [BTStack](https://github.com/bluekitchen/btstack) component
+* [Fork TFT_eSPI](https://github.com/icyqwq/TFT_eSPI.git) component (*forked from [TFT_eSPI](https://github.com/Bodmer/TFT_eSPI)*)
 
 ## How to compile it
 
@@ -31,7 +26,7 @@ Includes the following ESP-IDF components, with a pre-configured `sdkconfig` fil
 3. From the ESP-IDF cmd, clone the template
 
    ```sh
-   git clone --recursive https://gitlab.com/ricardoquesada/esp-idf-arduino-bluepad32-template.git my_project
+   git clone --recursive https://github.com/icyqwq/OLEDTrueType.git my_project
    ```
 
 4. Compile it
@@ -88,7 +83,7 @@ Includes the following ESP-IDF components, with a pre-configured `sdkconfig` fil
     # Do it everytime you want to start a new project
     # Clone the template somewhere
     mkdir ~/src && cd ~/src
-    git clone --recursive https://gitlab.com/ricardoquesada/esp-idf-arduino-bluepad32-template.git my_project
+    git clone --recursive https://github.com/icyqwq/OLEDTrueType.git my_project
     ```
 
     Export the ESP-IDF environment variables in your shell:
@@ -205,13 +200,5 @@ Subjective opinion: VSCode + ESP-IDF plugin is muuuuuch better than Arduino IDE.
 [esp-idf-plugin]: https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/vscode-setup.html
 
 ## Further info
+This detailed setup readme is taken from a great project: [Bluepad32 for Arduino](https://gitlab.com/ricardoquesada/bluepad32/-/blob/main/docs/plat_arduino.md)
 
-* [Bluepad32 for Arduino](https://gitlab.com/ricardoquesada/bluepad32/-/blob/main/docs/plat_arduino.md)
-* [Arduino as ESP-IDF component](https://docs.espressif.com/projects/arduino-esp32/en/latest/esp-idf_component.html)
-* [ESP-IDF VSCode plugin](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/vscode-setup.html)
-
-## Support
-
-* [Discord][discord]: any question? Ask them in our Discord server.
-
-[discord]: https://discord.gg/r5aMn6Cw5q
