@@ -1,4 +1,7 @@
-# ESP_IDF + TFT_eSPI + TrueType + OLED Legacy Driver
+# ESP_IDF + TFT_eSPI + TrueType + Legacy Driver for OLED
+![Image](./assets/1.jpg)
+
+> **Can also be used for TFT LCD**
 
 This is a template application to be used with [Espressif IoT Development Framework](https://github.com/espressif/esp-idf).
 
