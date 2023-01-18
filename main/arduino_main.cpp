@@ -1,54 +1,47 @@
 #include "sdkconfig.h"
 #include <Arduino.h>
-#include "SH1122.h"
-#include "ISprite.h"
-#include "binaryttf.h" // Simplified character set, only ASCII, kana and some symbols
+#include "driver/rmt.h"
+#include <IRremoteESP8266.h>
+#include <IRsend.h>
 
-#define USE_FLASH
+IRsend irsend(18);
 
-SH1122 sh1122;
-ISprite sprite(&sh1122);
-
-void OLEDTestTask(void *args)
+void sendCMD(uint16_t cmd)
 {
-    sprite.fillSprite(0);
+    #define PULSE_0   390
+    #define PULSE_1   1170
 
-#ifdef USE_SPIFFS
-    sprite.loadFont("/GenSenRounded-R.ttf", SPIFFS);  // Load font files from SPIFFS
-#endif
-#ifdef USE_SD
-    sprite.loadFont("/GenSenRounded-R.ttf", SD);  // Load font files from SD Card
-#endif
-#ifdef USE_FLASH
-    sprite.loadFont(binaryttf, sizeof(binaryttf));  // Load font files from binary data
-#endif
+    uint16_t rawData[28];
 
-    sprite.createRender(26, 32);
-    sprite.setTextSize(26);
-    sprite.setTextColor(15, 0);
-    sprite.setTextDatum(TL_DATUM);
-    sprite.drawString("Hello world!", 0, 0);
-    sprite.drawString("こんにちは", 0, 32);
-    sprite.pushSprite();
-
-    vTaskDelete(NULL);
+    for (int i = 0; i < 14; i++)
+    {
+        if (cmd & 0x0001)
+        {
+            rawData[i*2] = PULSE_1;
+            rawData[i*2 + 1] = PULSE_0;
+        }
+        else
+        {
+            rawData[i*2] = PULSE_0;
+            rawData[i*2 + 1] = PULSE_1;
+        }
+        cmd >>= 1;
+    }
+    irsend.sendRaw(rawData, 28, 38);  // Send a raw data capture at 38kHz.
 }
 
-// Arduino setup function. Runs in CPU 1
-void setup() {
+void setup() 
+{
     Serial.begin(115200);
 
-    sh1122.init(0);
-    // note: Only the drawing functions in the sprite class can be used
-    sprite.setColorDepth(4);
-    sprite.createSprite(256, 64);
-    sprite.fillSprite(0);
-    
-    xTaskCreatePinnedToCore(&OLEDTestTask, "OLEDTestTask", 64 * 1024, NULL, 10, NULL, 0);
+    delay(50);
+    Serial.printf("Hello!\n");
+
+    irsend.begin();
 }
 
-// Arduino loop function. Runs in CPU 1
 void loop() 
 {
-    delay(150);
+    sendCMD(0x0820);
+    delay(50);
 }
