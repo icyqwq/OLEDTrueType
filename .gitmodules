@@ -4,6 +4,3 @@
 [submodule "components/TFT_eSPI"]
 	path = components/TFT_eSPI
 	url = https://github.com/icyqwq/TFT_eSPI.git
-[submodule "components/IRremoteESP8266"]
-	path = components/IRremoteESP8266
-	url = https://github.com/crankyoldgit/IRremoteESP8266.git
